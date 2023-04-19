@@ -4,7 +4,7 @@ import { View } from "react-native";
 export default function SplashScreen({ navigation }) {
   setTimeout(() => {
     navigation.navigate("TabsNavigation");
-  }, 3000);
+  }, 300);
 
   return (
     <View>

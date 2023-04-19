@@ -31,7 +31,23 @@ const Tabs = createNativeStackNavigator();
 
 function TabsNavigation() {
   return (
-    <Tabs.Navigator>
+    <Tabs.Navigator
+      // cardStyle={{backgroundColor:'transparent'}}
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#00305A',
+        },
+
+        headerTitleStyle: {
+          color: '#00305A'
+        },
+
+
+
+        headerTintColor: '#fff',
+
+      }}
+    >
       <Tabs.Screen
         name="HomeScreen"
         component={HomeScreen}
@@ -39,19 +55,19 @@ function TabsNavigation() {
           tabBarLabel: "Home",
           headerShown: false
         }}
-      />
+        />
       <Tabs.Screen
         name="LoginScreen"
         component={LoginScreen}
         options={{
           tabBarLabel: "LoginScreen",
         }}
-      />
+        />
       <Tabs.Screen
         name="CadastrarScreen"
         component={CadastrarScreen}
         options={{
-          tabBarLabel: "CadastrarScreen",
+          tabBarLabel: "Cadastrar",
         }}
       />
     </Tabs.Navigator>
