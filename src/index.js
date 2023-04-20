@@ -42,8 +42,6 @@ function TabsNavigation() {
           color: '#00305A'
         },
 
-
-
         headerTintColor: '#fff',
 
       }}
@@ -55,14 +53,14 @@ function TabsNavigation() {
           tabBarLabel: "Home",
           headerShown: false
         }}
-        />
+      />
       <Tabs.Screen
         name="LoginScreen"
         component={LoginScreen}
         options={{
           tabBarLabel: "LoginScreen",
         }}
-        />
+      />
       <Tabs.Screen
         name="CadastrarScreen"
         component={CadastrarScreen}
