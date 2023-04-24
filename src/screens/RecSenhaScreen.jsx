@@ -9,7 +9,7 @@ export default function RecSenhaScreen() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  async function hadlePasswordReset() {
+  async function handlePasswordReset() {
     try {
       await passwordReset(email);
     } catch (error) {
@@ -32,19 +32,13 @@ export default function RecSenhaScreen() {
         multiline={false}
         value={email}
         onChangeText={setEmail}
-      />
+      /> 
 
-      <TextInput
-        style={styles.input}
-        label="Senha"
-        secureTextEntry={true}
-        placeholder="Digite sua Senha..."
-        multiline={false}
-        value={senha}
-        onChangeText={setSenha}
-      />
-
-      <Button style={styles.button} mode="contained">
+      <Button
+        style={styles.button}
+        mode="contained"
+        onPress={handlePasswordReset}
+      >
         Recuperar Senha
       </Button>
     </View>
