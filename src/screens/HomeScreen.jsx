@@ -24,6 +24,15 @@ export default function HomeScreen({ navigation }) {
       >
         Cadastrar
       </Button>
+      <Button
+        style={styles.button}
+        mode="contained"
+        onPress={() => {
+          navigation.navigate("RecSenhaScreen");
+        }}
+      >
+        Redefinir Senha
+      </Button>
       
     </View>
   );

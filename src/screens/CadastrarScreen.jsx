@@ -4,9 +4,10 @@ import { Button, Text } from "react-native-paper";
 import styles from "../utils/styles";
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../config/firebase";
+import { auth, db } from "../config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function CadastrarScreen() {
+export default function CadastrarScreen({ navigation }) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -14,13 +15,26 @@ export default function CadastrarScreen() {
   function cadastrarPessoa() {
     console.log(nome);
     console.log(email);
-    console.log(senha);
 
-    const docRef = addDoc(collection(db, "pessoas"), {
-      nomeDaPessoa: nome,
-      emailDaPessoa: email,
-      senhaDaPessoa: senha,
-    });
+    createUserWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // adicionar o usuário a coleção Pessoas usando o uid do usuário como chave estrangeira
+        const docRef = addDoc(collection(db, "Pessoas"), {
+          nome: nome,
+          email: email,
+          uid: user.uid,
+        }).then(() => {
+          navigation.navigate("LoginScreen");
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
   }
 
   return (

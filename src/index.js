@@ -4,6 +4,7 @@ import SplashScreen from "./screens/SplashScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import CadastrarScreen from "./screens/CadastrarScreen";
+import RecSenhaScreen from "./screens/RecSenhaScreen";
 
 export default function RootNavigation() {
   const Tab = createNativeStackNavigator();
@@ -68,6 +69,13 @@ function TabsNavigation() {
           tabBarLabel: "Cadastrar",
         }}
       />
+      <Tabs.Screen
+      name="RecSenhaScreen"
+      component={RecSenhaScreen}
+      options={{
+        tabBarLabel: "RecSenhaScreen",
+      }}
+    />
     </Tabs.Navigator>
   );
 }
