@@ -5,6 +5,8 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import CadastrarScreen from "./screens/CadastrarScreen";
 import RecSenhaScreen from "./screens/RecSenhaScreen";
+import IniciarGameScreen from "./screens/IniciarGameScreen";
+import GameScreen from "./screens/GameScreen";
 
 export default function RootNavigation() {
   const Tab = createNativeStackNavigator();
@@ -74,6 +76,20 @@ function TabsNavigation() {
       component={RecSenhaScreen}
       options={{
         tabBarLabel: "RecSenhaScreen",
+      }}
+    />
+    <Tabs.Screen
+      name="IniciarGameScreen"
+      component={IniciarGameScreen}
+      options={{
+        tabBarLabel: "IniciarGameScreen",
+      }}
+    />
+    <Tabs.Screen
+      name="GameScreen"
+      component={GameScreen}
+      options={{
+        tabBarLabel: "GameScreen",
       }}
     />
     </Tabs.Navigator>

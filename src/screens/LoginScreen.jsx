@@ -18,7 +18,7 @@ export default function LoginScreen({ navigation }) {
     console.log(senha);
     signInWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
-        navigation.navigate("HomeScreen");
+        navigation.navigate("IniciarGameScreen");
       })
       .catch((error) => {
         if (error.code === "auth/user-not-found") {
