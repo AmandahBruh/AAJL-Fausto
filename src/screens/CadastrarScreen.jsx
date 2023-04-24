@@ -1,13 +1,27 @@
 // import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
 import { View, TextInput } from "react-native";
 import { Button, Text } from "react-native-paper";
-// import { auth } from "../config/Firebase";
-
 import styles from "../utils/styles";
+import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 export default function CadastrarScreen() {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
+  function cadastrarPessoa() {
+    console.log(nome);
+    console.log(email);
+    console.log(senha);
+
+    const docRef = addDoc(collection(db, "pessoas"), {
+      nomeDaPessoa: nome,
+      emailDaPessoa: email,
+      senhaDaPessoa: senha,
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -20,6 +34,8 @@ export default function CadastrarScreen() {
         label="Nome"
         placeholder="Digite seu nome..."
         multiline={false}
+        value={nome}
+        onChangeText={setNome}
       />
 
       <TextInput
@@ -27,7 +43,9 @@ export default function CadastrarScreen() {
         label="E-mail"
         placeholder="Digite seu e-mail..."
         multiline={false}
-        />
+        value={email}
+        onChangeText={setEmail}
+      />
 
       <TextInput
         style={styles.input}
@@ -35,9 +53,11 @@ export default function CadastrarScreen() {
         secureTextEntry={true}
         placeholder="Digite sua Senha..."
         multiline={false}
+        value={senha}
+        onChangeText={setSenha}
       />
 
-      <Button style={styles.button} mode="contained">
+      <Button style={styles.button} mode="contained" onPress={cadastrarPessoa}>
         Cadastrar-se
       </Button>
     </View>
