@@ -83,6 +83,7 @@ function TabsNavigation() {
       component={IniciarGameScreen}
       options={{
         tabBarLabel: "IniciarGameScreen",
+        headerShown: false,
       }}
     />
     <Tabs.Screen
@@ -90,6 +91,7 @@ function TabsNavigation() {
       component={GameScreen}
       options={{
         tabBarLabel: "GameScreen",
+        headerShown: false,
       }}
     />
     </Tabs.Navigator>
