@@ -91,7 +91,7 @@ function TabsNavigation() {
       component={GameScreen}
       options={{
         tabBarLabel: "GameScreen",
-        headerShown: false,
+        // headerShown: false,
       }}
     />
     </Tabs.Navigator>
