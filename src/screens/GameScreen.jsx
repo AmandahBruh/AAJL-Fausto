@@ -7,6 +7,7 @@ import React, { useState } from "react";
 export default function GameScreen({ navigation }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [pontos, setPontos] = useState(0);
+  const [contador, setContador] = useState(0);
   const [dialog, setDialog] = useState({
     visible: false,
     mensagem: "",
@@ -16,6 +17,7 @@ export default function GameScreen({ navigation }) {
 
   function Acertou() {
     setPontos((prevPontos) => ++prevPontos);
+    setContador(contador + 1)
     // alert("Você Acertou!");
     setDialog({
       visible: true,
@@ -29,7 +31,10 @@ export default function GameScreen({ navigation }) {
       visible: true,
       mensagem: "Você errou!",
     });
+    setContador(contador + 1)
   }
+
+  // console.log(`contador: ${contador}`)
 
   function mudarPergunta() {
     setCurrentQuestionIndex((currentQuestionIndex + 1) % questions.length);
@@ -132,7 +137,7 @@ export default function GameScreen({ navigation }) {
 
             <Dialog.Actions>
               <Button onPress={() => {
-                if(pontos == 5) {
+                if(contador == 5) {
                   navigation.navigate("HomeScreen")
                 } else {
                   hideDialog()
