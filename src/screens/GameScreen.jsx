@@ -68,7 +68,7 @@ export default function GameScreen({ navigation }) {
           style={{ width: 250, height: 150 }}
         />
 
-        <Text style={styles.text}>{currentQuestion.pergunta}</Text>
+        <Text style={styles.text1}>{currentQuestion.pergunta}</Text>
 
         <Button mode="contained" style={styles.button} onPress={Acertou}>
           {currentQuestion.resposta1}
@@ -94,18 +94,18 @@ export default function GameScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container2}>
 
-      <View>
+      <View style={styles.cabeca}>
         <Image 
           source={require(`../img/logo.png`)}
-          style={{ width: 250, height: 150 }}
+          style={styles.logo}
         />
 
-        <Text>{pontos}</Text>
+        <Text style={styles.pontos}>{pontos}</Text>
       </View>
 
-      {aparecerAsPerguntas()}
+      <View>{aparecerAsPerguntas()}</View>
     </View>
   );
 }

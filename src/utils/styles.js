@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: "#4192D9",
     margin: 10,
-    color:'#00305A'
+    color:'#00305A',
   },
   button1: {
     display:"flex",
@@ -88,6 +88,41 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
     borderRadius: "999px",
+  },
+
+  container2: {
+    flex: 1,
+    backgroundColor: "#00305A",
+    alignItems: "center",
+    justifyContent: "space-around",
+    // marginTop:-10,
+  },
+
+  cabeca: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // marginTop: -10,
+    width: '100%',
+    paddingHorizontal: 30,
+  },
+
+  logo: {
+    width: 90,
+    height: 90,
+  },
+
+  pontos: {
+    color: 'white',
+    fontSize: 30,
+  },
+
+  text1: {
+    fontSize: 17,
+    letterSpacing: 0.25,
+    color: "white",
+    marginVertical: 20,
+    textAlign: 'center'
   },
 });
 
