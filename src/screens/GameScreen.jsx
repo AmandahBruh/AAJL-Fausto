@@ -131,7 +131,13 @@ export default function GameScreen({ navigation }) {
             </Dialog.Content>
 
             <Dialog.Actions>
-              <Button onPress={hideDialog}>Done</Button>
+              <Button onPress={() => {
+                if(pontos == 5) {
+                  navigation.navigate("HomeScreen")
+                } else {
+                  hideDialog()
+                }
+              }}>Done</Button>
             </Dialog.Actions>
           </Dialog>
         </Portal>
