@@ -6,19 +6,18 @@ import React, { useState } from "react";
 
 export default function GameScreen({ navigation }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [Acerto, setAcerto] = useState(0);
-  const [Erros, setErros] = useState(0);
   const [Pontos, setPontos] = useState(0);
 
   //alert("Você errou!");
 
   function Acertou() {
-    setAcerto(Acerto = alert("Você acertou!"));
-    setPontos(Pontos + 1)
+    setPontos((prevPontos) => ++prevPontos);
+    alert("Você Acertou!")
   }
+  console.log(Pontos);
 
   function Errou() {
-    setErros(Erros = alert("Você errou!"));
+    alert("Você Errou!")
   }
 
   const questions = [
@@ -59,7 +58,6 @@ export default function GameScreen({ navigation }) {
     },
   ];
 
-
   function aparecerAsPerguntas() {
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -70,26 +68,14 @@ export default function GameScreen({ navigation }) {
           style={{ width: 250, height: 150 }}
         />
 
-        <Text style={styles.text}>
-          {currentQuestion.pergunta}
-        </Text>
+        <Text style={styles.text}>{currentQuestion.pergunta}</Text>
 
-        <Button 
-          mode="contained" 
-          style={styles.button}
-          onPress={Acertou}
-        >
+        <Button mode="contained" style={styles.button} onPress={Acertou}>
           {currentQuestion.resposta1}
-          
         </Button>
 
-        <Button 
-          mode="contained" 
-          style={styles.button}
-          onPress={Errou}
-        >
+        <Button mode="contained" style={styles.button} onPress={Errou}>
           {currentQuestion.resposta2}
-          
         </Button>
 
         <Button
