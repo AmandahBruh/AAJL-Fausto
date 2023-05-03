@@ -1,5 +1,5 @@
 import { Image, View } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, Dialog, Portal, Provider } from "react-native-paper";
 import { Text } from "react-native-paper";
 import styles from "../utils/styles";
 import React, { useState } from "react";
@@ -7,18 +7,29 @@ import React, { useState } from "react";
 export default function GameScreen({ navigation }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [pontos, setPontos] = useState(0);
+  const [dialog, setDialog] = useState({
+    visible: false,
+    mensagem: "",
+  });
 
   //alert("Você errou!");
 
-  // function Acertou() {
-  //   setPontos((prevPontos) => ++prevPontos);
-  //   alert("Você Acertou!")
-  // }
+  function Acertou() {
+    setPontos((prevPontos) => ++prevPontos);
+    // alert("Você Acertou!");
+    setDialog({
+      visible: true,
+      mensagem: "Você Acertou!",
+    });
+  }
   // console.log(pontos);
 
-  // function Errou() {
-  //   alert("Você Errou!")
-  // }
+  function Errou() {
+    setDialog({
+      visible: true,
+      mensagem: "Você errou!",
+    });
+  }
 
   const questions = [
     {
@@ -58,6 +69,18 @@ export default function GameScreen({ navigation }) {
     },
   ];
 
+  const showDialog = () =>
+    setDialog({
+      ...dialog,
+      visible: true,
+    });
+
+  const hideDialog = () =>
+    setDialog({
+      ...dialog,
+      visible: false,
+    });
+
   function aparecerAsPerguntas() {
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -94,18 +117,27 @@ export default function GameScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container2}>
+    <Provider>
+      <View style={styles.container2}>
+        <View style={styles.cabeca}>
+          <Image source={require(`../img/logo.png`)} style={styles.logo} />
 
-      <View style={styles.cabeca}>
-        <Image 
-          source={require(`../img/logo.png`)}
-          style={styles.logo}
-        />
+          <Text style={styles.pontos}>{pontos}</Text>
+        </View>
 
-        <Text style={styles.pontos}>{pontos}</Text>
+        <View>{aparecerAsPerguntas()}</View>
+        <Portal>
+          <Dialog visible={dialog.visible} onDismiss={hideDialog}>
+            {/* <Dialog.Title>Alert</Dialog.Title> */}
+            <Dialog.Content>
+              <Text variant="bodyMedium">{dialog?.mensagem}</Text>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button onPress={hideDialog}>Done</Button>
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
       </View>
-
-      <View>{aparecerAsPerguntas()}</View>
-    </View>
+    </Provider>
   );
 }
