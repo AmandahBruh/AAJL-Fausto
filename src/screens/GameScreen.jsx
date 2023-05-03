@@ -10,15 +10,15 @@ export default function GameScreen({ navigation }) {
 
   //alert("Você errou!");
 
-  function Acertou() {
-    setPontos((prevPontos) => ++prevPontos);
-    alert("Você Acertou!")
-  }
-  console.log(pontos);
+  // function Acertou() {
+  //   setPontos((prevPontos) => ++prevPontos);
+  //   alert("Você Acertou!")
+  // }
+  // console.log(pontos);
 
-  function Errou() {
-    alert("Você Errou!")
-  }
+  // function Errou() {
+  //   alert("Você Errou!")
+  // }
 
   const questions = [
     {
