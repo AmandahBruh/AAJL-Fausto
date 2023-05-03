@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 export default function GameScreen({ navigation }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [Pontos, setPontos] = useState(0);
+  const [pontos, setPontos] = useState(0);
 
   //alert("Você errou!");
 
@@ -14,7 +14,7 @@ export default function GameScreen({ navigation }) {
     setPontos((prevPontos) => ++prevPontos);
     alert("Você Acertou!")
   }
-  console.log(Pontos);
+  console.log(pontos);
 
   function Errou() {
     alert("Você Errou!")
@@ -93,5 +93,19 @@ export default function GameScreen({ navigation }) {
     );
   }
 
-  return <View style={styles.container}>{aparecerAsPerguntas()}</View>;
+  return (
+    <View style={styles.container}>
+
+      <View>
+        <Image 
+          source={require(`../img/logo.png`)}
+          style={{ width: 250, height: 150 }}
+        />
+
+        <Text>{pontos}</Text>
+      </View>
+
+      {aparecerAsPerguntas()}
+    </View>
+  );
 }
