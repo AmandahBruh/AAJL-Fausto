@@ -31,6 +31,10 @@ export default function GameScreen({ navigation }) {
     });
   }
 
+  function mudarPergunta() {
+    setCurrentQuestionIndex((currentQuestionIndex + 1) % questions.length);
+  }
+
   const questions = [
     {
       pergunta: "Nezuko morre?",
@@ -75,11 +79,13 @@ export default function GameScreen({ navigation }) {
       visible: true,
     });
 
-  const hideDialog = () =>
+  const hideDialog = () => {
+    mudarPergunta();
     setDialog({
       ...dialog,
       visible: false,
     });
+  };
 
   function aparecerAsPerguntas() {
     const currentQuestion = questions[currentQuestionIndex];
@@ -101,15 +107,7 @@ export default function GameScreen({ navigation }) {
           {currentQuestion.resposta2}
         </Button>
 
-        <Button
-          mode="contained"
-          style={styles.button}
-          onPress={() =>
-            setCurrentQuestionIndex(
-              (currentQuestionIndex + 1) % questions.length
-            )
-          }
-        >
+        <Button mode="contained" style={styles.button} onPress={mudarPergunta}>
           Mudar Pergunta
         </Button>
       </>
@@ -128,10 +126,10 @@ export default function GameScreen({ navigation }) {
         <View>{aparecerAsPerguntas()}</View>
         <Portal>
           <Dialog visible={dialog.visible} onDismiss={hideDialog}>
-            {/* <Dialog.Title>Alert</Dialog.Title> */}
             <Dialog.Content>
               <Text variant="bodyMedium">{dialog?.mensagem}</Text>
             </Dialog.Content>
+
             <Dialog.Actions>
               <Button onPress={hideDialog}>Done</Button>
             </Dialog.Actions>
