@@ -33,15 +33,6 @@ export default function HomeScreen({ navigation }) {
       >
         Redefinir Senha
       </Button>
-      <Button
-        style={styles.button}
-        mode="contained"
-        onPress={() => {
-          navigation.navigate("GameScreen");
-        }}
-      >
-        Quiz
-      </Button>
       
     </View>
   );

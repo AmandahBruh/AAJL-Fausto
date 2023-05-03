@@ -6,6 +6,20 @@ import React, { useState } from "react";
 
 export default function GameScreen({ navigation }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [Acerto, setAcerto] = useState(0);
+  const [Erros, setErros] = useState(0);
+  const [Pontos, setPontos] = useState(0);
+
+  //alert("Você errou!");
+
+  function Acertou() {
+    setAcerto(Acerto = alert("Você acertou!"));
+    setPontos(Pontos + 1)
+  }
+
+  function Errou() {
+    setErros(Erros = alert("Você errou!"));
+  }
 
   const questions = [
     {
@@ -13,32 +27,38 @@ export default function GameScreen({ navigation }) {
       resposta1: "Não",
       resposta2: "Sim",
       img: "nezuco-morre.jpg",
+      id: 1,
     },
     {
       pergunta: "Quantos Onis Tanjiro matou?",
       resposta1: 4,
       resposta2: 10,
       img: "tanjiro.png",
+      id: 2,
     },
     {
       pergunta: "Qual o objetivo de Demon Slayer?",
       resposta1: "Achar a cura para salvar a Nezuko",
       resposta2: "Matar Onis",
       img: "objetivodemon-slayer-3.jpg",
+      id: 3,
     },
     {
       pergunta: "Qual o nome do corvo de Tanjiro?",
       resposta1: "Ytagarasu",
       resposta2: "Jiummi",
       img: "corvotanjiro4.png",
+      id: 4,
     },
     {
       pergunta: "Tanjiro usa a respiração do sol?",
       resposta1: "Sim",
       resposta2: "Não",
       img: "respiracao-do-sol-tanjiro.jpg",
+      id: 5,
     },
   ];
+
 
   function aparecerAsPerguntas() {
     const currentQuestion = questions[currentQuestionIndex];
@@ -57,15 +77,19 @@ export default function GameScreen({ navigation }) {
         <Button 
           mode="contained" 
           style={styles.button}
+          onPress={Acertou}
         >
           {currentQuestion.resposta1}
+          
         </Button>
 
         <Button 
           mode="contained" 
           style={styles.button}
+          onPress={Errou}
         >
           {currentQuestion.resposta2}
+          
         </Button>
 
         <Button
